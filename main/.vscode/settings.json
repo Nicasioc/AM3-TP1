@@ -1,0 +1,7 @@
+{
+  "files.exclude": {
+    ".vscode": true,
+    "**/*.ini": true,
+    "out": true
+  }
+}

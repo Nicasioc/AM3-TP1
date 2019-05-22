@@ -1,0 +1,23 @@
+Libro: the nature of code
+
+
+Entrgas
+3 junio entrega final (tp terminado)
+10 junio consulta
+17 feriado
+24 entrega evaluativa
+
+
+Deteccion
+
+umbral de brillo, deteccion de nivel de gris de los pixeles
+color tracking
+substraccion de video
+optical flow
+busqueda patrones, ej: reactivision, ar toolkit, vuforia
+
+reflexion total interna frustrada
+
+reactboard/arduino
+
+facedetection(algoritmo HARD_CASCADE)
