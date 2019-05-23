@@ -7,16 +7,17 @@ class Composicion {
     pantalla = pantalla_;
     fractal = new Fractal(pantalla);
     background = background_;
+    cantidadFractalesEjeX = 4;
   }
 
   void render() {
     this.drawComposicion();
     image(background, 0,0);
-    image(pantalla, 0, 0);
+    image(pantalla, 0-CROP_SIZE/2, 0-CROP_SIZE/2, CANVAS_WIDTH+CROP_SIZE, CANVAS_HEIGHT+CROP_SIZE);
   }
 
   void drawComposicion() {
-    cantidadFractalesEjeX = int( map(mouseX, 2, CANVAS_WIDTH, 2, 8 ) ); // valor final
+    //cantidadFractalesEjeX = int( map(mouseX, 2, CANVAS_WIDTH, 2, 8 ) ); // valor final
     int cantidadFractalesEjeY = cantidadFractalesEjeX;
     int fractalPositionY = pantalla.height/cantidadFractalesEjeY;
     int fractalPositionX = pantalla.width/cantidadFractalesEjeX;
