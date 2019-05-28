@@ -1,18 +1,25 @@
+int SPACEBAR = 32;
+
+
 void keyPressed() { 
 
   composicion.onKeyPressUpdateFractalTexture(key);
 
-  if (key == CODED) {
+  if (keyCode == 32) {
+    REST_MODE = !REST_MODE;
+  }
 
-  if (keyCode == UP) {
-    cantidadFractales=cantidadFractales+2;
-    normalizeFractalValues();
-  }
-  
-  if (keyCode == DOWN) {
-    cantidadFractales=cantidadFractales-2;
-    normalizeFractalValues();
-  }
+
+  if (key == CODED && REST_MODE) {
+    if (keyCode == UP) {
+      cantidadFractales=cantidadFractales+2;
+      normalizeFractalValues();
+    }
+    
+    if (keyCode == DOWN) {
+      cantidadFractales=cantidadFractales-2;
+      normalizeFractalValues();
+    }
 
     if (keyCode == LEFT) {
       fractalHeight=fractalHeight+1;
