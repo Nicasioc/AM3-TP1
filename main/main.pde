@@ -61,6 +61,7 @@ void draw() {
     angulo_global++;
   }
 
+//esto tendria "angulo_global > ANGLE_ACTIVE_MODE" que setear un flag de que termino de crecer
   if (!REST_MODE && angulo_global > ANGLE_ACTIVE_MODE) {
     angulo_global--;
   }
