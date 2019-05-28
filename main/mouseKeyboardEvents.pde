@@ -7,6 +7,8 @@ void keyPressed() {
 
   if (keyCode == 32) {
     REST_MODE = !REST_MODE;
+    intro_ended = false;
+    timer.setTimestamp();
   }
 
 
