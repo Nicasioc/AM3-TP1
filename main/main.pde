@@ -53,18 +53,6 @@ void setup() {
 }
 
 void draw() {
-  //@TODO: Como manejar el crop?
-  //@TODO: Pasos que faltan
-  /*
-  // 1 Detectar
-  // * Inciar interaccion + Tiempo "juego"
-  // * Volver a estado incial 1
-  // 4 lineas que conectan
-  // 5 defazar un poco las unidades
-  // 6 Estar un tiempo en una zona
-  //  - separar la pantalla en dos partes sobre el eje Y
-      - un tiempoen una zona cambia un control,un tiempoen otra cambia a otro control
-  */
  
   if (REST_MODE && outro_ended) {
     float vibracion = map(noise(frameRate)*ANGLE_REST_MODE, 0.0, float(ANGLE_REST_MODE), float(ANGLE_REST_MODE-50), float(ANGLE_REST_MODE));

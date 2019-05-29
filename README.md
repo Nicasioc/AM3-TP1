@@ -6,4 +6,14 @@
  - `A`-`D` cylce between textures 
 
 ## TODO
-On main file
+
+ - Captura con TSPS
+   - Detectar persona (cuando detecta poner rest_mode:false)
+   - Movimiento eje Y.
+   - Estar un tiempo en una zona
+      - separar la pantalla en dos partes sobre el eje Y un tiempoen una zona cambia un control,un tiempoen otra cambia a otro control
+ - ~~Inciar interaccion + Tiempo "juego"~~
+ - ~~Volver a estado incial 1~~
+ - Lineas que conectan cuando no se tocan los fractales.
+ - Desfazar un poco las unidades (nice to have)
+ - Pensar una idea para manejar el crop.
