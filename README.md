@@ -15,5 +15,8 @@
  - ~~Inciar interaccion + Tiempo "juego"~~
  - ~~Volver a estado incial 1~~
  - Lineas que conectan cuando no se tocan los fractales.
+ - Fondo (opciones)
+    1. animacion qe mueva el fondo.
+    2. fondos fijos que cambian entrecada _"partida"_
  - Desfazar un poco las unidades (nice to have)
  - Pensar una idea para manejar el crop.
