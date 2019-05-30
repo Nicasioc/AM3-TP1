@@ -43,8 +43,8 @@ class Fractal {
   void drawFractal(int size_, int level) {
     //angulo difinido en main
     
-    if(!REST_MODE && intro_ended) {
-      angulo_global = mouseY;
+    if(!rest_mode && intro_ended) {
+      //angulo_global = mouseY;
     }
 
     int angle = int(map(angulo_global, 1, CANVAS_HEIGHT, 1, 180));

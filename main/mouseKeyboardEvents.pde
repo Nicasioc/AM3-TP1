@@ -6,13 +6,13 @@ void keyPressed() {
   composicion.onKeyPressUpdateFractalTexture(key);
 
   if (keyCode == 32) {
-    REST_MODE = !REST_MODE;
+    rest_mode = !rest_mode;
     intro_ended = false;
     timer.setTimestamp();
   }
 
 
-  if (key == CODED && REST_MODE) {
+  if (key == CODED && rest_mode) {
     if (keyCode == UP) {
       cantidadFractales=cantidadFractales+2;
       normalizeFractalValues();

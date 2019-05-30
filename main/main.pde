@@ -1,6 +1,7 @@
-// flechas, variacion tamano;
-//mouse  variacion cantidad y fondo;
-//cada vez que arranca toma una textura diferente;
+// import TSPS
+import tsps.*;
+TSPS tspsReceiver;
+
 /*
 fractalHeightModifier => modifica forma fractal hijo dividiendo fractalHeight por fractalHeightModifier
 */
@@ -12,10 +13,10 @@ int CROP_SIZE;
 int ONE_MINUTE_IN_MILLIS = 60000;
 float PLAY_TIME_IN_MINUTES = 1;
 /* Animacion inicial */
-int ANGLE_REST_MODE;
+int ANGLE_rest_mode;
 int angle_active_mode;
 float angulo_global; //usado para rotar los fractales
-boolean REST_MODE = true; //hay moviento, tiene que actualizar con movimiento
+boolean rest_mode = true; //hay moviento, tiene que actualizar con movimiento
 boolean intro_ended = false;
 boolean outro_ended = true;
 int maxSpeedStart = 10;
@@ -34,11 +35,12 @@ void setup() {
   //SIEMPRE CUADRADO!!!??
   //Composition <drawComposicion> asume que el canvas es cuadrado
   size(700, 700, P3D);
+  CROP_SIZE= 200;
   frameRate(60);
   FRACTALS_LEVEL = 4;
   CANVAS_WIDTH=width;
   CANVAS_HEIGHT=height;
-  ANGLE_REST_MODE=700;
+  ANGLE_rest_mode=700;
   angle_active_mode=700/2;
   angulo_global=height;
   fractalHeight=4;
@@ -48,31 +50,31 @@ void setup() {
   background = createGraphics(CANVAS_WIDTH, CANVAS_HEIGHT,P3D);
   composicion = new Composicion(pantalla, background);
   timer = new Timer(ONE_MINUTE_IN_MILLIS*PLAY_TIME_IN_MINUTES);
-  CROP_SIZE= 200;
+  tspsReceiver= new TSPS(this, 12000);
   //fondo = new Background();
 }
 
 void draw() {
  
-  if (REST_MODE && outro_ended) {
-    float vibracion = map(noise(frameRate)*ANGLE_REST_MODE, 0.0, float(ANGLE_REST_MODE), float(ANGLE_REST_MODE-50), float(ANGLE_REST_MODE));
+  if (rest_mode && outro_ended) {
+    float vibracion = map(noise(frameRate)*ANGLE_rest_mode, 0.0, float(ANGLE_rest_mode), float(ANGLE_rest_mode-50), float(ANGLE_rest_mode));
     angulo_global = vibracion;
   }
 
- if (!REST_MODE && !intro_ended && angulo_global <= angle_active_mode) {
+ if (!rest_mode && !intro_ended && angulo_global <= angle_active_mode) {
    intro_ended = true;
    outro_ended = false;
  }
 
-  if (REST_MODE && !outro_ended && angulo_global >= ANGLE_REST_MODE) {
+  if (rest_mode && !outro_ended && angulo_global >= ANGLE_rest_mode) {
     outro_ended = true;
   }
 
-  if (REST_MODE && angulo_global < ANGLE_REST_MODE) {
+  if (rest_mode && angulo_global < ANGLE_rest_mode) {
     angulo_global+=5;
   }
 
-  if (!REST_MODE && !intro_ended) {
+  if (!rest_mode && !intro_ended) {
     //es mouseY asi no salta cuando termina y el usuario tiene control desde el comienzo
     angle_active_mode = mouseY;
     if (speed < maxSpeedStart) {
@@ -82,7 +84,7 @@ void draw() {
   }
 
   if (timer.isTimeMarkReached()) {
-    REST_MODE = true;
+    rest_mode = true;
   }
 
   fadeGraphics(background, 100);

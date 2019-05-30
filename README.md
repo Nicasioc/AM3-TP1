@@ -5,6 +5,9 @@
  - `Arrows` change fractal size
  - `A`-`D` cylce between textures 
 
+## Libraries 
+ - [TSPS](http://www.tsps.cc/)
+
 ## TODO
 
  - Captura con TSPS
@@ -18,5 +21,6 @@
  - Fondo (opciones)
     1. animacion qe mueva el fondo.
     2. fondos fijos que cambian entrecada _"partida"_
- - Desfazar un poco las unidades (nice to have)
  - Pensar una idea para manejar el crop.
+ - Debug usando flechas en lugar de captura
+ - Desfazar un poco las unidades (nice to have)
