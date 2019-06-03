@@ -11,11 +11,6 @@ void keyPressed() {
     timer.setTimestamp();
   }
 
-  if (key == 'd'|| key == 'D') {
-    //debug.pde
-    showDebug = !showDebug;
-  }
-
   if (key == CODED && rest_mode) {
     if (keyCode == UP) {
       cantidadFractales=cantidadFractales+2;

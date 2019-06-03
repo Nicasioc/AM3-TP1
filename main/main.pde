@@ -37,7 +37,7 @@ void setup() {
   //SIEMPRE CUADRADO!!!??
   //Composition <drawComposicion> asume que el canvas es cuadrado
   size(700, 700, P3D);
-  CROP_SIZE= 200;
+  CROP_SIZE= 500;
   frameRate(60);
   FRACTALS_LEVEL = 4;
   CANVAS_WIDTH=width;
@@ -65,32 +65,36 @@ void draw() {
   }
 
   if (rest_mode && outro_ended) {
-    println("if 1, estado incial");
+    println("estado incial");
     float vibracion = map(noise(frameRate)*ANGLE_rest_mode, 0.0, float(ANGLE_rest_mode), float(ANGLE_rest_mode-50), float(ANGLE_rest_mode));
     angulo_global = vibracion;
   } else if (rest_mode && angulo_global < ANGLE_rest_mode) {
-    println("if 3, volviendo a reposo");
+    println("volviendo a reposo");
     angulo_global+=5;
   } else if (!rest_mode && !intro_ended) {
-    println("if 4, mostrando inicio");
+    println("mostrando inicio");
     if (speed < maxSpeedStart) {
       speed+=accelleration;
     }
     angulo_global-=speed;
   }
   if (!rest_mode && !intro_ended && angulo_global <= angle_active_mode) {
-   println("if 5, termino animacion inicio");
+   println("terminó animacion inicio");
    intro_ended = true;
   }
 
   if (rest_mode && !outro_ended && angulo_global >= ANGLE_rest_mode) {
-    println("if 6, termino animacion final");
+    println("terminó animacion salida");
     outro_ended = true;
   }
 
   fadeGraphics(background, 100);
   fadeGraphics(pantalla, 100);
-  fadeGraphics(debugScreen, 100);
   background(0);
+
+  if (!rest_mode && outro_ended) {
+    background.text("Shipido", width/2, 200);
+  }
+
   composicion.render();
 }

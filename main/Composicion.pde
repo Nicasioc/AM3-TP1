@@ -44,7 +44,8 @@ class Composicion {
       background.beginDraw();
       //background.line(fractal.getXByIndex(0), fractal.getYByIndex(0), fractal.getXByIndex(1)+size_, fractal.getYByIndex(1));
       //PGraphics imageBuffer, PImage texture, float width_, float height_, float x, float y
-      drawVertexShapeXY(background, fractal.getTexture(), fractal.getXByIndex(0), fractal.getYByIndex(0), 20, -1*fractal.getXByIndex(3)+size_);
+      //drawVertexShapeXY(background, fractal.getTexture(), fractal.getXByIndex(0), fractal.getYByIndex(0), 20, -1*fractal.getXByIndex(3)+size_);
+      //drawVertexShapeXY(background, fractal.getTexture(), fractal.getXByIndex(0), fractal.getYByIndex(0), 20, -1*fractal.getXByIndex(3)+size_);
       //background.line(fractal.getXByIndex(2), fractal.getYByIndex(2), , fractal.getYByIndex(3));
       //background.line(fractal.getXByIndex(3), fractal.getYByIndex(3), fractal.getXByIndex(1)+size_, fractal.getYByIndex(1));
       //background.line(fractal.getXByIndex(1), fractal.getYByIndex(1), fractal.getXByIndex(2)+size_, fractal.getYByIndex(2));
