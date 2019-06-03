@@ -1,8 +1,6 @@
 /*
   Events for TSPS library
-
 */
-TSPSPerson person = null;
 
 void personEntered( TSPSPerson p ){
   println("personEntered");
@@ -14,17 +12,17 @@ void personEntered( TSPSPerson p ){
 }
 
 void personUpdated( TSPSPerson p ){
-  println("personUpdated");
-  if (person != null) {
-    println("p.id"+p.id);
-    println("person.id"+person.id);
-    println(p.centroid.y*height);
-    angulo_global = p.centroid.y*height;
+  if (person != null && !rest_mode) {
+    if(intro_ended) {
+      angulo_global = round(p.centroid.x*width);
+    }
+    if(!intro_ended) {
+      angle_active_mode = round(p.centroid.x*width);
+    }
   }
 }
 
 void personLeft( TSPSPerson p ){
   println("personLeft");
-  rest_mode = true;
-  person = null;
+  restartApp();
 }

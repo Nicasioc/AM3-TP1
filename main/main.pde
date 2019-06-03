@@ -17,6 +17,7 @@ int ANGLE_rest_mode;
 int angle_active_mode;
 float angulo_global; //usado para rotar los fractales
 boolean rest_mode = true; //hay moviento, tiene que actualizar con movimiento
+TSPSPerson person = null;
 boolean intro_ended = false;
 boolean outro_ended = true;
 int maxSpeedStart = 10;
@@ -28,6 +29,7 @@ Timer timer;
 /* Buffer fondo y fractales */
 PGraphics pantalla;
 PGraphics background;
+PGraphics debugScreen;
 Background fondo;
 Composicion composicion;
 
@@ -48,6 +50,7 @@ void setup() {
   cantidadFractales=6;
   pantalla = createGraphics(CANVAS_WIDTH, CANVAS_HEIGHT,P3D);
   background = createGraphics(CANVAS_WIDTH, CANVAS_HEIGHT,P3D);
+  debugScreen = createGraphics(CANVAS_WIDTH, CANVAS_HEIGHT,P3D);
   composicion = new Composicion(pantalla, background);
   timer = new Timer(ONE_MINUTE_IN_MILLIS*PLAY_TIME_IN_MINUTES);
   tspsReceiver= new TSPS(this, 12000);
@@ -56,40 +59,38 @@ void setup() {
 
 void draw() {
  
+  if ( timer.hasTimestamp() && timer.isMaredTimeReached()) {
+    println("time ended");
+    restartApp();
+  }
+
   if (rest_mode && outro_ended) {
+    println("if 1, estado incial");
     float vibracion = map(noise(frameRate)*ANGLE_rest_mode, 0.0, float(ANGLE_rest_mode), float(ANGLE_rest_mode-50), float(ANGLE_rest_mode));
     angulo_global = vibracion;
-  }
-
- if (!rest_mode && !intro_ended && angulo_global <= angle_active_mode) {
-   intro_ended = true;
-   outro_ended = false;
- }
-
-  if (rest_mode && !outro_ended && angulo_global >= ANGLE_rest_mode) {
-    outro_ended = true;
-  }
-
-  if (rest_mode && angulo_global < ANGLE_rest_mode) {
+  } else if (rest_mode && angulo_global < ANGLE_rest_mode) {
+    println("if 3, volviendo a reposo");
     angulo_global+=5;
-  }
-
-  if (!rest_mode && !intro_ended) {
-    //es mouseY asi no salta cuando termina y el usuario tiene control desde el comienzo
-    angle_active_mode = mouseY;
+  } else if (!rest_mode && !intro_ended) {
+    println("if 4, mostrando inicio");
     if (speed < maxSpeedStart) {
       speed+=accelleration;
     }
     angulo_global-=speed;
   }
+  if (!rest_mode && !intro_ended && angulo_global <= angle_active_mode) {
+   println("if 5, termino animacion inicio");
+   intro_ended = true;
+  }
 
-  if (timer.isTimeMarkReached()) {
-    rest_mode = true;
+  if (rest_mode && !outro_ended && angulo_global >= ANGLE_rest_mode) {
+    println("if 6, termino animacion final");
+    outro_ended = true;
   }
 
   fadeGraphics(background, 100);
   fadeGraphics(pantalla, 100);
+  fadeGraphics(debugScreen, 100);
   background(0);
   composicion.render();
-  
 }

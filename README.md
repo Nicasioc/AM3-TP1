@@ -10,9 +10,9 @@
 
 ## TODO
 
- - Captura con TSPS
-   - Detectar persona (cuando detecta poner rest_mode:false)
-   - Movimiento eje Y.
+ - ~~Captura con TSPS~~
+   - ~~Detectar persona (cuando detecta poner rest_mode:false)~~
+   - ~~Movimiento eje Y.~~
    - Estar un tiempo en una zona
       - separar la pantalla en dos partes sobre el eje Y un tiempoen una zona cambia un control,un tiempoen otra cambia a otro control
  - ~~Inciar interaccion + Tiempo "juego"~~
